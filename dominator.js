@@ -2,7 +2,14 @@ const { flattenTreeToArray } = require('./dom-util');
 const _ = require('underscore');
 
 const getElementById = function(root, id) {
-  // Your code here
+  let domArray = flattenTreeToArray(root);
+  let resultNode;
+  domArray.forEach(node => {
+    if (resultNode === undefined && node.id === id) {
+      resultNode = node;
+    }
+  });
+  return resultNode;
 };
 
 const getElementsByClassName = function(root, className) {
