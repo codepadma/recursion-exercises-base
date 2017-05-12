@@ -1,9 +1,5 @@
 const _ = require('underscore'); // the real one! :)
 
-// This is what you would do if you liked things to be easy:
-// const stringify = JSON.stringify;
-// But you don't. So you're going to write it from scratch...
-
 function encloseWithQuotes(obj) {
   return '"' + obj + '"';
 }
@@ -12,7 +8,7 @@ function encloseWithSquareBraces(obj) {
   return '[' + obj + ']';
 }
 
-function encloseWithParanthesis() {
+function encloseWithParanthesis(obj) {
   return '{' + obj + '}';
 }
 
@@ -29,7 +25,7 @@ function stringifyObject(obj) {
   for (let key in obj) {
     let keyValPair = [];
     keyValPair.push(encloseWithQuotes(key));
-    keyValPair.push(stringify(obj));
+    keyValPair.push(stringify(obj[key]));
     object.push(keyValPair.join(':'));
   }
   return encloseWithParanthesis(object);
